@@ -3,6 +3,7 @@ import { FaBars } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo-dark.webp"
 import { AuthContext } from '../provider/AuthProvider';
+import ThemeController from './ThemeController';
 
 const Header = () => {
 
@@ -88,6 +89,9 @@ const Header = () => {
           <ul className="flex items-center gap-4">{links}</ul>
         </div>
         <div className="navbar-end">
+          <div>
+            <ThemeController/>
+          </div>
           <div className="flex gap-2 items-center">
             {user && (
               <div className="relative">
@@ -128,6 +132,7 @@ const Header = () => {
               </div>
             )}
           </div>
+          
         </div>
       </div>
     </div>
