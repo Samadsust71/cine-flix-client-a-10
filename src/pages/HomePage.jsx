@@ -1,9 +1,12 @@
 import React from 'react'
+import Banner from '../components/Banner'
 
 const HomePage = () => {
   return (
-    <div className='bg-green-600 text-white text-center min-h-[calc(100vh-200px)] flex justify-center items-center'>
-      <h1>Home pages</h1>
+    <div>
+      <section className="banner">
+        <Banner/>
+      </section>
     </div>
   )
 }
