@@ -80,7 +80,7 @@ const Header = () => {
           <div className="flex gap-2 items-center">
             <div className="hidden lg:block"><img src={logo} alt="" className="h-10 w-10 rounded-full object-cover" /></div>
             <div><Link className="text-xl font-semibold">
-            Cine<span className="text-[#10B981]">Verse</span>
+            Cineflix
           </Link></div>
           </div>
         </div>

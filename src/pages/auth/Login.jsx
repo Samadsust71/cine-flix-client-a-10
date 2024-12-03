@@ -86,7 +86,7 @@ const Login = () => {
               </button>
               <label className="label">
                 <Link
-                  to={"/auth/resetpassword"}
+                  
                   className="label-text-alt link link-hover"
                 >
                   Forgot password?
@@ -113,7 +113,7 @@ const Login = () => {
 
           <p className="text-center mb-6">
             Don"t have an account?{" "}
-            <Link to={"/auth/registration"} className="text-[#0a7c84fd]">
+            <Link to={"/register"} className="text-[#0a7c84fd]">
               Register
             </Link>{" "}
           </p>
@@ -125,7 +125,7 @@ const Login = () => {
           className="px-4 flex items-center justify-center gap-2 py-2 border border-[#0a5784] bg-gradient-to-b from-blue-50 via-sky-100 to-white w-full rounded-lg text-[#0a5784] hover:bg-sky-200 active:bg-sky-300 transition-all"
         >
           <FcGoogle/>
-          <span>{loading?"Signing in...":"Sign In with Google"}</span>
+          <span>Sign In with Google</span>
         </button>
       </div>
     </div>

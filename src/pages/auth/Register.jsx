@@ -53,7 +53,7 @@ const Register = () => {
             setLoading(false);
             e.target.reset();
             toast.success("Registration Succesful !");
-            navigate("/");
+            navigate(`${location?.state ? location.state : "/"}`);
           })
         .catch((err) => {
           setLoading(false);
@@ -66,7 +66,7 @@ const Register = () => {
         signInWithGoogle()
           .then(() => {
             setLoading(false)
-            navigate("/");
+            navigate(`${location?.state ? location.state : "/"}`);
           })
           .catch((err) => {
             setLoading(false)
@@ -155,7 +155,7 @@ const Register = () => {
 
         <p className="text-center mb-6">
           Already have an account?{" "}
-          <Link to={"/auth/login"} className="text-[#0a7c84fd]">
+          <Link to={"/login"} className="text-[#0a7c84fd]">
             Login
           </Link>{" "}
         </p>
@@ -167,7 +167,7 @@ const Register = () => {
         className="px-4 flex items-center justify-center gap-2 py-2 border border-[#0a5784] bg-gradient-to-b from-blue-50 via-sky-100 to-white w-full rounded-lg text-[#0a5784] hover:bg-sky-200 active:bg-sky-300 transition-all"
       >
         <FcGoogle />
-        <span>{loading?'Signing up...':"Sign Up with Google"}</span>
+        <span>Sign Up with Google</span>
       </button>
     </div>
   )
