@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
+import Swal from "sweetalert2";
 
 const AddMovie = () => {
   const genres = ["Comedy", "Drama", "Horror", "Action", "Romance", "Sci-Fi"];
@@ -91,7 +92,7 @@ const AddMovie = () => {
 
   // send movie data to server
 
-  fetch('',{
+  fetch('http://localhost:5000/movies',{
     method: "POST",
     headers:{
       "content-type":"application/json"
@@ -100,7 +101,14 @@ const AddMovie = () => {
   })
   .then(res=>res.json())
   .then(data=>{
-    console.log(data)
+    if (data.insertedId) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Movie added successfully',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      })
+    }
   })
    
   };
