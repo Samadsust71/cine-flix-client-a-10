@@ -16,7 +16,8 @@ const router = createBrowserRouter([
       children:[
         {
             path:"/",
-            element:<HomePage/>
+            element:<HomePage/>,
+            loader: ()=>fetch("http://localhost:5000/movies-sorted")
         },
         {
             path:"/addMovie",
