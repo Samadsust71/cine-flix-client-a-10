@@ -31,17 +31,20 @@ const Header = () => {
           All Movies
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900"
-          }
-          to={"/addMovie"}
-        >
-         Add Movie
-        </NavLink>
-      </li>
-      <li>
+     {
+      user &&  <li>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "text-[#10B981] underline" : "text-gray-900"
+        }
+        to={"/addMovie"}
+      >
+       Add Movie
+      </NavLink>
+    </li>
+     }
+      {
+        user && <li>
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-[#10B981] underline" : "text-gray-900"
@@ -51,14 +54,15 @@ const Header = () => {
          My Favorites
         </NavLink>
       </li>
+      }
       <li>
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-[#10B981] underline" : "text-gray-900"
           }
-          to={"/addMovie"}
+          to={"/about"}
         >
-         Extra Section
+         About
         </NavLink>
       </li>
     </>
