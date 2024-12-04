@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage";
 import ErrorPage from "../pages/ErrorPage";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import AddMovie from "../pages/moviesPages/AddMovie";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
         {
             path:"/",
             element:<HomePage/>
+        },
+        {
+            path:"/addMovie",
+            element:<AddMovie/>
         },
         {
             path:"/login",

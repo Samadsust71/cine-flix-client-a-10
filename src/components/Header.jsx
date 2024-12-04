@@ -88,8 +88,8 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="flex items-center gap-4">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <div>
+        <div className="navbar-end items-center">
+          <div className='mr-2'>
             <ThemeController/>
           </div>
           <div className="flex gap-2 items-center">
@@ -101,7 +101,7 @@ const Header = () => {
                   className="h-10 w-10 rounded-full object-cover"
                   alt="user"
                 />
-                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 translate-y-12 bg-white text-gray-800 text-sm py-1 pl-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none w-[100px]">
+                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 translate-y-12 bg-white text-gray-800 text-sm py-1 pl-2 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none w-[100px] z-20">
                   {user?.displayName}
                 </div>
               </div>
