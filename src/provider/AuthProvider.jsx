@@ -9,6 +9,18 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const emailInfo = useRef()
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light"
+  );
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  // Toggle theme
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
  
 
   const createUser = (email, password) => {
@@ -58,6 +70,8 @@ const AuthProvider = ({ children }) => {
     passwordReset,
     signInWithGoogle,
     emailInfo,
+    toggleTheme,
+    theme
     
   };
   return (

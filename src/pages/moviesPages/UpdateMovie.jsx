@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
-import toast from "react-hot-toast";
 import { IoArrowBack } from "react-icons/io5";
 import { Link, useLoaderData } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";

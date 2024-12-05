@@ -14,7 +14,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900"
+            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
           }
           to={"/"}
         >
@@ -24,7 +24,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900"
+            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
           }
           to={"/allMovies"}
         >
@@ -35,7 +35,7 @@ const Header = () => {
       user &&  <li>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "text-[#10B981] underline" : "text-gray-900"
+          isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
         }
         to={"/addMovie"}
       >
@@ -47,7 +47,7 @@ const Header = () => {
         user && <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900"
+            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
           }
           to={"/myFavorites"}
         >
@@ -58,7 +58,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900"
+            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
           }
           to={"/about"}
         >
@@ -84,7 +84,7 @@ const Header = () => {
           </div>
           <div className="flex gap-2 items-center">
             <div className="hidden lg:block"><img src={logo} alt="" className="h-10 w-10 rounded-full object-cover" /></div>
-            <div><Link className="text-xl font-semibold">
+            <div><Link className="text-xl font-semibold text-red-500">
             Cineflix
           </Link></div>
           </div>

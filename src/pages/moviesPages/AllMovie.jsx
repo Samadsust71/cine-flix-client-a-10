@@ -16,7 +16,7 @@ const AllMovie = () => {
   },[search])
   return (
     <div className="w-11/12 mx-auto my-10">
-      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">
+      <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6 dark:text-white">
         All Movies
       </h2>
       <div className="flex flex-col justify-center items-center my-10">
