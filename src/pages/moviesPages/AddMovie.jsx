@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddMovie = () => {
+  const {setLoading} = useContext(AuthContext)
   const genres = ["Comedy", "Drama", "Horror", "Action", "Romance", "Sci-Fi"];
   const [rating, setRating] = useState(0);
   const [selectedGenres, setSelectedGenres] = useState([]);
@@ -34,7 +36,6 @@ const AddMovie = () => {
   // form
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const form = e.target;
     const movieTitle = form.title.value;
     const poster = form.poster.value;
@@ -50,7 +51,7 @@ const AddMovie = () => {
       duration,
       releaseYear,
       summary,
-      ratings,
+      ratings
     };
   
     // validation part start
@@ -108,6 +109,7 @@ const AddMovie = () => {
         icon: 'success',
         confirmButtonText: 'Ok'
       })
+      setLoading(false)
     }
   })
    
