@@ -105,7 +105,7 @@ const Login = () => {
             <div className="form-control mt-6">
               <button 
               disabled={loading}
-              className="py-2 rounded-lg bg-[#0a5784] text-white font-bold hover:bg-[#084a63] active:bg-[#06394e]">
+              className="py-2 rounded-lg bg-[#121C22] text-white font-bold">
                 {loading?"Logging in...":"Login"}
               </button>
             </div>
@@ -113,12 +113,12 @@ const Login = () => {
 
           <p className="text-center mb-6">
             Don"t have an account?{" "}
-            <Link to={"/register"} className="text-[#0a7c84fd]">
+            <Link to={"/register"} className="text-[#FFB347]">
               Register
             </Link>{" "}
           </p>
         </div>
-        <div className="divider">OR</div>
+        <div className="divider dark:text-white">OR</div>
         <button
           onClick={handleGoogleLogin}
           disabled={loading}

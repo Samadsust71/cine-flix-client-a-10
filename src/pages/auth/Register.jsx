@@ -146,7 +146,7 @@ const Register = () => {
           <div className="form-control mt-6">
             <button 
             disabled={loading}
-            className="py-2 rounded-lg bg-[#0a5784] text-white font-bold hover:bg-[#084a63] active:bg-[#06394e]">
+            className="py-2 rounded-lg bg-[#121C22] text-white font-bold">
               {loading?'Registering...':'Register'}
               
             </button>
@@ -155,12 +155,12 @@ const Register = () => {
 
         <p className="text-center mb-6">
           Already have an account?{" "}
-          <Link to={"/login"} className="text-[#0a7c84fd]">
+          <Link to={"/login"} className="text-[#FFB347]">
             Login
           </Link>{" "}
         </p>
       </div>
-      <div className="divider">OR</div>
+      <div className="divider dark:text-white">OR</div>
       <button
         onClick={handleGoogleLogin}
         disabled={loading}

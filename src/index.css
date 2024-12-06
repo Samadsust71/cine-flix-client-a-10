@@ -6,6 +6,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+    overflow-y: auto;
+}
 svg.star-svg {
     display: inline;
     

@@ -14,7 +14,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#FFB347] font-semibold underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FFB347] font-semibold" : "text-gray-900 dark:text-white"
           }
           to={"/"}
         >
@@ -24,7 +24,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#FFB347] font-semibold underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FFB347] font-semibold" : "text-gray-900 dark:text-white"
           }
           to={"/allMovies"}
         >
@@ -35,7 +35,7 @@ const Header = () => {
       user &&  <li>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "text-[#FFB347] font-semibold underline" : "text-gray-900 dark:text-white"
+          isActive ? "text-[#FFB347] font-semibold" : "text-gray-900 dark:text-white"
         }
         to={"/addMovie"}
       >
@@ -47,7 +47,7 @@ const Header = () => {
         user && <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#FFB347] font-semibold underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FFB347] font-semibold" : "text-gray-900 dark:text-white"
           }
           to={"/myFavorites"}
         >
@@ -58,7 +58,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#FFB347] font-semibold underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FFB347] font-semibold" : "text-gray-900 dark:text-white"
           }
           to={"/about"}
         >

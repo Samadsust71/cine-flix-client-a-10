@@ -3,7 +3,7 @@ import { FaStar, FaHandshake, FaHeart, FaTv } from "react-icons/fa";
 const ReasonsToJoin = () => {
   return (
     <section className="my-12">
-      <h2 className="text-2xl lg:text-4xl font-bold dark:text-white mb-6">More Reasons to Join</h2>
+      <h2 className="text-2xl lg:text-4xl font-bold dark:text-white mb-6 text-center">More Reasons to Join</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Card 1 */}
         <div className="bg-base-200 dark:bg-transparent dark:text-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">

@@ -19,8 +19,8 @@ const AllMovie = () => {
       <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6 dark:text-white">
         All Movies
       </h2>
-      <div className="flex flex-col justify-center items-center my-10">
-        <label className="input input-bordered flex items-center gap-2">
+      <div className="flex flex-col justify-center items-center my-10 max-w-lg mx-auto">
+        <label className="input input-bordered flex items-center gap-2 w-full ">
           <input onChange={(e)=>setSearch(e.target.value)} type="text" className="grow" placeholder="Search" />
           <FaSearch/>
         </label>
