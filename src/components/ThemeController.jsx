@@ -20,7 +20,7 @@ const ThemeController = () => {
       <IoSunnyOutline className="swap-off text-2xl fill-current" />
 
       {/* moon icon */}
-      <IoMoonOutline className="swap-on text-2xl fill-current" />
+      <IoMoonOutline className="swap-on text-2xl fill-current text-white" />
     </label>
   );
 };

@@ -14,7 +14,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FF6E6E] font-semibold underline" : "text-gray-900 dark:text-white"
           }
           to={"/"}
         >
@@ -24,7 +24,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FF6E6E] font-semibold underline" : "text-gray-900 dark:text-white"
           }
           to={"/allMovies"}
         >
@@ -35,7 +35,7 @@ const Header = () => {
       user &&  <li>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
+          isActive ? "text-[#FF6E6E] font-semibold underline" : "text-gray-900 dark:text-white"
         }
         to={"/addMovie"}
       >
@@ -47,7 +47,7 @@ const Header = () => {
         user && <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FF6E6E] font-semibold underline" : "text-gray-900 dark:text-white"
           }
           to={"/myFavorites"}
         >
@@ -58,7 +58,7 @@ const Header = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "text-[#10B981] underline" : "text-gray-900 dark:text-white"
+            isActive ? "text-[#FF6E6E] font-semibold underline" : "text-gray-900 dark:text-white"
           }
           to={"/about"}
         >
@@ -72,20 +72,20 @@ const Header = () => {
       <div className="navbar w-11/12 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost dark:text-white lg:hidden">
               <FaBars />
             </div>
             <ul
               tabIndex={0}
-              className="menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu-sm dropdown-content bg-base-100 dark:bg-[#0F172A] rounded-box z-10 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
           <div className="flex gap-2 items-center">
-            <div className="hidden lg:block"><img src={logo} alt="" className="h-10 w-10 rounded-full object-cover" /></div>
-            <div><Link className="text-xl font-semibold text-red-500">
-            Cineflix
+            <div className=""><img src={logo} alt="" className="h-10 w-10 rounded-full object-cover" /></div>
+            <div><Link className="text-4xl font-bold text-[#FFB347]">
+            CineFlix
           </Link></div>
           </div>
         </div>
@@ -115,7 +115,7 @@ const Header = () => {
             {user ? (
               <button
                 onClick={logOutUser}
-                className="bg-[#10B981] hover:bg-[#34D399] px-4 py-2 rounded-lg shadow-md text-white transition-all duration-300"
+                className="bg-[#0F172A] px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
               >
                 Logout
               </button>
@@ -123,13 +123,13 @@ const Header = () => {
               <div className='flex items-center gap-2'>
                 <button
                 onClick={() => navigate("/login")}
-                className="bg-[#10B981] hover:bg-[#34D399] px-4 py-2 rounded-lg shadow-md text-white transition-all duration-300"
+                className="bg-[#0F172A]  px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
               >
                 Login
               </button>
                 <button
                 onClick={() => navigate("/register")}
-                className="bg-[#10B981] hover:bg-[#34D399] px-4 py-2 rounded-lg shadow-md text-white transition-all duration-300"
+                className="bg-[#0F172A]  px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
               >
                 Register
               </button>

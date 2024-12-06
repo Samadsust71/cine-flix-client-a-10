@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 
 const RootLayout = () => {
   return (
-    <div className='font-poppins dark:bg-[#2A181F]' >
+    <div className='font-poppins dark:bg-[#121C22]' >
       <header>
         <Header/>
       </header>

@@ -116,7 +116,7 @@ const AddMovie = () => {
   };
 
   return (
-    <div className="min-h-screen bg-add-coffee bg-cover bg-no-repeat bg-center flex  flex-col items-center justify-center px-4 pt-12 pb-28">
+    <div className="min-h-screen flex  flex-col items-center justify-center px-4 pt-12 pb-28">
       {/* Back Link */}
       <Link
         to="/"
@@ -126,12 +126,12 @@ const AddMovie = () => {
         Back to Home
       </Link>
 
-      <div className="bg-[#F4F3F0] dark:bg-[#2E2E2E] rounded-lg p-8 max-w-2xl w-full">
+      <div className="bg-[#F4F3F0] rounded-lg p-8 max-w-2xl w-full card bg-gradient-to-b from-blue-50 via-sky-100 to-whites shadow-lg ">
         {/* Form Header */}
-        <h2 className="text-2xl font-bold text-center text-[#374151] dark:text-white mb-4">
+        <h2 className="text-2xl font-bold text-center mb-4">
           Add New Movie
         </h2>
-        <p className="text-center text-gray-600 mb-8 dark:text-white">
+        <p className="text-center mb-8">
           Fill in the details below to add a new movie to the collection. Fields
           marked with * are required.
         </p>
@@ -141,7 +141,7 @@ const AddMovie = () => {
           {/* movie title & movie poster */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+              <label className="block text-sm font-medium">
                 Movie Title *
               </label>
               <input
@@ -153,7 +153,7 @@ const AddMovie = () => {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-white">
+              <label className="block text-sm font-medium">
                 Movie Poster(url) *
               </label>
               <input
@@ -171,7 +171,7 @@ const AddMovie = () => {
             
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium">
                 Release Year *
               </label>
               <select
@@ -187,7 +187,7 @@ const AddMovie = () => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium">
                 Duration (in minutes) *
               </label>
               <input
@@ -203,7 +203,7 @@ const AddMovie = () => {
           {/* Release Year & Rating */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium">
                 Genre *
               </label>
               {genres.map((genre) => (
@@ -221,7 +221,7 @@ const AddMovie = () => {
               ))}
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium">
                 Rating *
               </label>
               <div
@@ -250,7 +250,7 @@ const AddMovie = () => {
 
           {/* Photo */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium">
               Summary *
             </label>
             <textarea
@@ -264,7 +264,7 @@ const AddMovie = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="py-1 rounded-md btn-block border-2 border-[#331A15] bg-[#D2B48C] hover:bg-[#D2B48C] text-[#331A15] transition-all"
+            className="py-1 btn-block text-white font-semibold bg-[#121C22] rounded-lg"
           >
             Add Movie
           </button>

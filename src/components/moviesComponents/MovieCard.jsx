@@ -1,20 +1,13 @@
 import React from "react";
 import { IoArrowForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { Rating } from "react-simple-star-rating";
 
-const MovieCard = ({movie}) => {
-    const {
-        _id,
-        movieTitle,
-        poster,
-        genres,
-        duration,
-        releaseYear,
-        ratings,} = movie || {}
+const MovieCard = ({ movie }) => {
+  const { _id, movieTitle, poster, genres, duration, releaseYear, ratings } =
+    movie || {};
   return (
-    <div
-      className="card card-compact w-full bg-base-100 dark:bg-[#2E2E2E] shadow-xl"
-    >
+    <div className="card  w-full bg-base-100 dark:bg-transparent shadow-xl dark:text-white">
       <figure>
         <img
           src={poster}
@@ -22,26 +15,34 @@ const MovieCard = ({movie}) => {
           className="w-full h-72 object-cover"
         />
       </figure>
-      <div className="card-body">
-        <h3 className="card-title text-xl font-semibold text-gray-800 dark:text-white">
+      <div className="p-6 space-y-4 font-medium">
+        <div className="flex justify-between items-center">
+        <div className="flex items-center text-sm">
+          <div
+            style={{
+              direction: "1tr",
+              fontFamily: "sans-serif",
+              touchAction: "none",
+            }}
+          >
+            <Rating
+              size={18}
+              initialValue={ratings}
+              allowFraction
+              readonly={true}
+            />
+          </div>
+        </div>
+        <p className="text-sm">{releaseYear}</p>
+        </div>
+      <p className="text-sm text-[#FF6E6E]"> {genres.join(", ")}</p>
+        <h3 className="card-title text-2xl font-semibold">
           {movieTitle}
         </h3>
-        <p className="text-sm text-gray-600 dark:text-white">Duration: {duration} mins</p>
-        <p className="text-sm text-gray-600 dark:text-white">
-          Release Year: {releaseYear}
-        </p>
-        <div>
-            <p>Genre:</p>
-        <ul className="text-sm text-gray-600 list-disc list-inside dark:text-white">
-            {
-                genres.map(genre=><li key={genre}>{genre}</li>)
-            }
-        </ul>
-        </div>
-        <p className="text-sm text-gray-600 dark:text-white">Rating: {ratings} ★</p>
-        <div className="card-actions justify-end">
-          <Link to={`/movies/${_id}`} className="btn btn-primary">
-            See Details <IoArrowForward className="ml-2" />
+        <p className="">Duration: {duration} min</p>
+        <div className="card-actions">
+          <Link to={`/movies/${_id}`} className="flex items-center px-4 py-2 text-white font-semibold bg-[#121C22] rounded-lg dark:bg-slate-900">
+           <span>See Details</span> <IoArrowForward className="ml-2" />
           </Link>
         </div>
       </div>

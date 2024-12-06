@@ -62,12 +62,12 @@ const UpdateMovie = () => {
   return (
     <div className="min-h-screen bg-add-coffee bg-cover bg-no-repeat bg-center flex flex-col items-center justify-center px-4 pt-12 pb-28">
       {/* Back Link */}
-      <Link to="/" className="flex items-center text-[#374151] hover:text-[#331A15] mb-6 font-semibold">
+      <Link to="/" className="flex items-center text-[#374151] dark:text-white hover:text-[#331A15] mb-6  font-semibold">
         <IoArrowBack className="mr-2" />
         Back to Home
       </Link>
 
-      <div className="bg-[#F4F3F0] rounded-lg p-8 max-w-2xl w-full">
+      <div className="bg-[#F4F3F0] rounded-lg p-8 max-w-2xl w-full card bg-gradient-to-b from-blue-50 via-sky-100 to-whites shadow-lg ">
         {/* Form Header */}
         <h2 className="text-2xl font-bold text-center text-[#374151] mb-4">Update Movie</h2>
         <p className="text-center text-gray-600 mb-8">
@@ -182,7 +182,7 @@ const UpdateMovie = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="py-1 rounded-md btn-block border-2 border-[#331A15] bg-[#D2B48C] hover:bg-[#D2B48C] text-[#331A15] transition-all"
+            className="py-1 btn-block text-white font-semibold bg-[#121C22] rounded-lg"
           >
             Update Movie
           </button>

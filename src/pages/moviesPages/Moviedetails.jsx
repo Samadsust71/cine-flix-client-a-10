@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { IoHeart, IoTrashBin } from "react-icons/io5";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
@@ -10,7 +9,7 @@ const Moviedetails = () => {
   const movie = useLoaderData();
   const navigate = useNavigate();
   const { user, setLoading } = useContext(AuthContext);
-  const [isFavorite, setIsFavorite] = useState(false);
+  
   const {
     _id,
     movieTitle,
@@ -47,7 +46,6 @@ const Moviedetails = () => {
       if (data.insertedId) {
         toast.success("Added to the favourite movie list")
         setLoading(false)
-        setIsFavorite(true);
       }
     })
     
@@ -65,7 +63,7 @@ const Moviedetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/movies/${_id}`, {
+        fetch(`http://localhost:5000/movies/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -84,25 +82,23 @@ const Moviedetails = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto my-10">
-      <div className="card card-compact w-full bg-base-100 shadow-xl">
-        <figure>
+    <div className="max-w-5xl mx-auto my-10">
+      <div className="card w-full bg-base-100 dark:bg-transparent dark:text-white shadow-lg rounded-lg">
+        <figure className="">
           <img
             src={poster}
             alt={movieTitle}
             className="w-full h-[800px] object-cover"
           />
         </figure>
-        <div className="card-body">
-          <h3 className="card-title text-2xl font-semibold text-gray-800">
+       <div>
+       <div className="card-body space-y-4">
+          <h3 className="card-title text-2xl lg:text-4xl font-semibold">
             {movieTitle}
           </h3>
-          <p className="text-sm text-gray-600">Genre: {genres.join(", ")}</p>
-          <p className="text-sm text-gray-600">Duration: {duration} mins</p>
-          <p className="text-sm text-gray-600">Release Year: {releaseYear}</p>
-          <p className="text-sm text-gray-600">Summary: {summary}</p>
-          <p className="text-sm text-gray-600">
-            Rating:{" "}
+          <div className="flex items-center">
+          <p className="text-sm text-[#FF6E6E]">{genres.join(", ")}</p>
+          <p className="text-sm flex items-center">
             <Rating
               initialValue={ratings}
               readonly
@@ -110,31 +106,43 @@ const Moviedetails = () => {
               iconsCount={5}
               allowFraction
             />
+           <span>{ratings}</span>
           </p>
+          </div>
+          <div className="border-b-2"></div>
+          <p className="text-sm ">{summary}</p>
+          <p className="text-sm ">Duration: {duration} min</p>
+          <p className="text-sm ">Release Year: {releaseYear}</p>
+         
+          <div className="border-b-2"></div>
 
-          <div className="card-actions  mt-4">
-            <button
+          <div className="card-actions items-center justify-between mt-4">
+           <div className="flex items-center gap-2">
+           <button
               onClick={handleAddToFavorites}
-              className={`btn btn-primary  flex items-center`}
+              className={`px-4 py-2 text-white font-semibold bg-[#FFB347] rounded-lg`}
              
             >
-              <IoHeart className="mr-2" />{" "}
-              Add to Favorite
-            </button>
-            <button
-              onClick={() => handleDelete(_id)}
-              className="btn btn-error flex items-center"
-            >
-              <IoTrashBin className="mr-2" /> Delete Movie
+             + Add to Favorite
             </button>
             <Link
               to={`/updateMovie/${_id}`} 
-              className="btn btn-success flex items-center"
+              className="px-4 py-2 text-white font-semibold bg-[#121C22] rounded-lg dark:bg-slate-900"
             >
                Update Movie
             </Link>
+           </div>
+            <div>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="px-4 py-2 text-white font-semibold bg-red-600 rounded-lg"
+            >
+              Delete
+            </button>
+            </div>
           </div>
         </div>
+       </div>
       </div>
     </div>
   );
