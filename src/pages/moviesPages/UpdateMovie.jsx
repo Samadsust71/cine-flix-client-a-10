@@ -37,7 +37,7 @@ const UpdateMovie = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/movie/${loadedMovie?._id}`, {
+    fetch(`https://cine-verse-server.vercel.app/movie/${loadedMovie?._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

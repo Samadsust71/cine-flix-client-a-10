@@ -6,7 +6,7 @@ const FavouriteMovies = () => {
   const {user} = useContext(AuthContext) 
   const [favMovies, setFavMovies] = useState([])
  useEffect(()=>{
-    fetch(`http://localhost:5000/favourite_movies/${user?.email}`)
+    fetch(`https://cine-verse-server.vercel.app/favourite_movies/${user?.email}`)
     .then(res=>res.json())
     .then(data=>{
         setFavMovies(data)

@@ -27,7 +27,7 @@ const FavMovieCard = ({movie ,setFavMovies,favMovies}) => {
             confirmButtonText: "Yes, delete it!",
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/favourite_movies/${id}`, {
+              fetch(`https://cine-verse-server.vercel.app/favourite_movies/${id}`, {
                 method: "DELETE",
               })
                 .then((res) => res.json())

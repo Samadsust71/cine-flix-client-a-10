@@ -34,7 +34,7 @@ const Moviedetails = () => {
       email,
     };
 
-    fetch("http://localhost:5000/favourite_movies", {
+    fetch("https://cine-verse-server.vercel.app/favourite_movies", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,7 @@ const Moviedetails = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/movies/${id}`, {
+        fetch(`https://cine-verse-server.vercel.app/movies/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

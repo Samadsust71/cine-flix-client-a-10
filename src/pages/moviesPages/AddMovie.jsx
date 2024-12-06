@@ -93,7 +93,7 @@ const AddMovie = () => {
 
   // send movie data to server
 
-  fetch('http://localhost:5000/movies',{
+  fetch('https://cine-verse-server.vercel.app/movies',{
     method: "POST",
     headers:{
       "content-type":"application/json"

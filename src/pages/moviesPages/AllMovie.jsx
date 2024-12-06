@@ -8,7 +8,7 @@ const AllMovie = () => {
   const [movies , setMovies] = useState(loadedMovies)
   const [search, setSearch] = useState("")
   useEffect(()=>{
-    fetch(`http://localhost:5000/movie?search=${search}`)
+    fetch(`https://cine-verse-server.vercel.app/movie?search=${search}`)
     .then(res=>res.json())
     .then(data=>{
       setMovies(data)
