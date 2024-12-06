@@ -60,7 +60,7 @@ const Banner = () => {
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-[400px] md:h-[800px] object-cover"
+              className="w-full h-[800px] object-cover"
             />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-start  text-white pl-6 space-y-8">
               <p className="text-gray-300 font-semibold border-l-4 border-red-600 pl-2">

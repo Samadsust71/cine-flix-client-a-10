@@ -1,20 +1,37 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { IoArrowBack } from "react-icons/io5";
 import { Link, useLoaderData } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import Select from "react-select";
 
 const UpdateMovie = () => {
   const { setLoading } = useContext(AuthContext);
-  const loadedMovie = useLoaderData()
-  const genres = ["Comedy", "Drama", "Horror", "Action", "Romance", "Sci-Fi"];
+  const loadedMovie = useLoaderData();
+  const genres = [
+    { value: "Comedy", label: "Comedy" },
+    { value: "Drama", label: "Drama" },
+    { value: "Horror", label: "Horror" },
+    { value: "Action", label: "Action" },
+    { value: "Romance", label: "Romance" },
+    { value: "Sci-Fi", label: "Sci-Fi" },
+  ];
+  const [selectedGenres, setSelectedGenres] = useState([]);
   const releaseYears = Array.from(
     { length: new Date().getFullYear() - 2000 + 1 },
     (_, i) => 2000 + i
   );
-
+  useEffect(() => {
+    if (loadedMovie?.genres) {
+      const initialGenres = loadedMovie.genres.map((genre) => ({
+        value: genre,
+        label: genre,
+      }));
+      setSelectedGenres(initialGenres);
+    }
+  }, [loadedMovie]);
   const { register, handleSubmit, control, reset, setError } = useForm({
     defaultValues: {
       movieTitle: loadedMovie?.movieTitle,
@@ -28,14 +45,16 @@ const UpdateMovie = () => {
   });
 
   const onSubmit = (data) => {
-    const { movieTitle, poster, duration, releaseYear, summary, genres, ratings } = data;
-    const movieData = { movieTitle, poster, genres, duration, releaseYear, summary, ratings};
-
-    // Validation for genres selection
+    const genres = selectedGenres.map((genre) => genre.value);
     if (genres.length === 0) {
-      setError("genres", { type: "manual", message: "Please select at least one genre!" });
+      setError("genres", {
+        type: "manual",
+        message: "Please select at least one genre!",
+      });
       return;
     }
+
+    const movieData = { ...data, genres };
 
     fetch(`https://cine-verse-server.vercel.app/movie/${loadedMovie?._id}`, {
       method: "PUT",
@@ -46,14 +65,13 @@ const UpdateMovie = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.modifiedCount) {
+        if (data.matchedCount) {
           Swal.fire({
             title: "Success!",
             text: "Movie updated successfully",
             icon: "success",
             confirmButtonText: "Ok",
           });
-          reset();
           setLoading(false);
         }
       });
@@ -62,16 +80,21 @@ const UpdateMovie = () => {
   return (
     <div className="min-h-screen bg-add-coffee bg-cover bg-no-repeat bg-center flex flex-col items-center justify-center px-4 pt-12 pb-28">
       {/* Back Link */}
-      <Link to="/" className="flex items-center text-[#374151] dark:text-white hover:text-[#331A15] mb-6  font-semibold">
+      <Link
+        to="/"
+        className="flex items-center text-[#374151] dark:text-white hover:text-[#331A15] mb-6  font-semibold"
+      >
         <IoArrowBack className="mr-2" />
         Back to Home
       </Link>
 
       <div className="bg-[#F4F3F0] rounded-lg p-8 max-w-2xl w-full card bg-gradient-to-b from-blue-50 via-sky-100 to-whites shadow-lg ">
         {/* Form Header */}
-        <h2 className="text-2xl font-bold text-center text-[#374151] mb-4">Update Movie</h2>
+        <h2 className="text-2xl font-bold text-center text-[#374151] mb-4">
+          Update Movie
+        </h2>
         <p className="text-center text-gray-600 mb-8">
-          Fill in the details below to update the movie  
+          Fill in the details below to update the movie
         </p>
 
         {/* Form */}
@@ -79,16 +102,23 @@ const UpdateMovie = () => {
           {/* Movie Title & Movie Poster */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">Movie Title *</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Movie Title *
+              </label>
               <input
                 type="text"
-                {...register("movieTitle", { required: "Movie title is required", minLength: 2 })}
+                {...register("movieTitle", {
+                  required: "Movie title is required",
+                  minLength: 2,
+                })}
                 placeholder="Enter movie title"
                 className="input input-bordered w-full"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Movie Poster(url) *</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Movie Poster(url) *
+              </label>
               <input
                 type="text"
                 {...register("poster", {
@@ -106,12 +136,14 @@ const UpdateMovie = () => {
 
           {/* Genre & Duration */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-           
-             
             <div>
-              <label className="block text-sm font-medium text-gray-700">Release Year *</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Release Year *
+              </label>
               <select
-                {...register("releaseYear", { required: "Release year is required" })}
+                {...register("releaseYear", {
+                  required: "Release year is required",
+                })}
                 className="input input-bordered w-full"
               >
                 <option value="">Select Year</option>
@@ -122,12 +154,17 @@ const UpdateMovie = () => {
                 ))}
               </select>
             </div>
-             
+
             <div>
-              <label className="block text-sm font-medium text-gray-700">Duration (in minutes) *</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Duration (in minutes) *
+              </label>
               <input
                 type="number"
-                {...register("duration", { required: "Duration is required", min: 60 })}
+                {...register("duration", {
+                  required: "Duration is required",
+                  min: 60,
+                })}
                 placeholder="Enter duration (in minutes)"
                 className="input input-bordered w-full"
               />
@@ -136,22 +173,39 @@ const UpdateMovie = () => {
 
           {/* Release Year & Rating */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-              <label className="block text-sm font-medium text-gray-700">Genre *</label>
-              {genres.map((genre) => (
-                <label key={genre} className="flex items-center w-fit cursor-pointer">
-                  <input
-                    type="checkbox"
-                    value={genre}
-                    {...register("genres")}
-                    className="mr-2"
-                  />
-                  <span>{genre}</span>
-                </label>
-              ))}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">
+                Genre *
+              </label>
+              <Controller
+                name="genres"
+                control={control}
+                rules={{ required: "Please select at least one genre!" }}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Select
+                      {...field}
+                      options={genres}
+                      value={selectedGenres}
+                      onChange={(selected) => {
+                        setSelectedGenres(selected);
+                        field.onChange(selected);
+                      }}
+                      isMulti
+                    />
+                    {fieldState.error && (
+                      <span className="text-red-500 text-sm">
+                        {fieldState.error.message}
+                      </span>
+                    )}
+                  </>
+                )}
+              />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700">Rating *</label>
+              <label className="block text-sm font-medium text-gray-700">
+                Rating *
+              </label>
               <Controller
                 name="ratings"
                 control={control}
@@ -170,9 +224,14 @@ const UpdateMovie = () => {
 
           {/* Summary */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">Summary *</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Summary *
+            </label>
             <textarea
-              {...register("summary", { required: "Summary is required", minLength: 10 })}
+              {...register("summary", {
+                required: "Summary is required",
+                minLength: 10,
+              })}
               className="w-full p-2 border rounded"
               rows="4"
               placeholder="Enter movie summary"

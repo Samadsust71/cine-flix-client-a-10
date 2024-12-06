@@ -5,12 +5,21 @@ import { Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import Select from "react-select";
 
 const AddMovie = () => {
   const {setLoading} = useContext(AuthContext)
-  const genres = ["Comedy", "Drama", "Horror", "Action", "Romance", "Sci-Fi"];
+  const genres = [
+    { value: "Comedy", label: "Comedy" },
+    { value: "Drama", label: "Drama" },
+    { value: "Horror", label: "Horror" },
+    { value: "Action", label: "Action" },
+    { value: "Romance", label: "Romance" },
+    { value: "Sci-Fi", label: "Sci-Fi" },
+  ];
   const [rating, setRating] = useState(0);
   const [selectedGenres, setSelectedGenres] = useState([]);
+
   const releaseYears = Array.from(
     { length: new Date().getFullYear() - 2000 + 1 },
     (_, i) => 2000 + i
@@ -22,17 +31,10 @@ const AddMovie = () => {
   };
 
   // for genre
-  const handleGenreChange = (e) => {
-    const { value, checked } = e.target;
+  const handleGenreChange = (selectedGenre) => {
+    setSelectedGenres(selectedGenre);
     
-    if (checked) {
-      setSelectedGenres((prevGenres) => [...prevGenres, value]);
-    } 
-    else {
-      setSelectedGenres((prevGenres) => prevGenres.filter((genre) => genre !== value));
-    }
   };
-
   // form
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,7 +45,7 @@ const AddMovie = () => {
     const releaseYear = form.releaseYear.value;
     const summary = form.summary.value;
     const ratings = rating;
-    const genres = selectedGenres;
+    const genres = selectedGenres.map(genre=>genre.value) || [];
     const movieData = {
       movieTitle,
       poster,
@@ -206,19 +208,12 @@ const AddMovie = () => {
               <label className="block text-sm font-medium">
                 Genre *
               </label>
-              {genres.map((genre) => (
-                <label key={genre} className="flex items-center w-fit cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="genre"
-                    value={genre}
-                    onChange={handleGenreChange}
-                    checked={selectedGenres.includes(genre)}
-                    className="mr-2"
-                  />
-                  <span>{genre}</span>
-                </label>
-              ))}
+              <Select 
+              options={genres}
+              value={selectedGenres}
+              onChange={handleGenreChange}
+              isMulti
+              />
             </div>
             <div>
               <label className="block text-sm font-medium">
