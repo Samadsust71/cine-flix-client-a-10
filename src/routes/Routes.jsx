@@ -10,6 +10,7 @@ import Moviedetails from "../pages/moviesPages/Moviedetails";
 import PrivateRoute from "./PrivateRoute";
 import FavouriteMovies from "../pages/moviesPages/FavouriteMovies";
 import UpdateMovie from "../pages/moviesPages/UpdateMovie";
+import About from "../pages/About";
 
 const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         {
             path:"/register",
             element:<Register/>
+        },
+        {
+            path:"/about",
+            element:<About/>
         }
       ]
     },

@@ -3,9 +3,9 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="footer footer-center bg-[#050505] rounded p-10 text-white">
+    <footer className="footer footer-center bg-[#050505]  p-10 text-white">
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-2xl text-[#FFB347] font-bold">Cineflix</h1>
+        <h1 className="text-2xl text-[#FFB347] font-bold">CineFlix</h1>
         <p className="">
         Where Every Frame Tells a Story.
         </p>
