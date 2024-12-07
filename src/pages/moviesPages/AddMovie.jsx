@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import toast from "react-hot-toast";
 import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -15,6 +15,8 @@ const AddMovie = () => {
     { value: "Action", label: "Action" },
     { value: "Romance", label: "Romance" },
     { value: "Sci-Fi", label: "Sci-Fi" },
+    { value: "Superhero", label: "Superhero" },
+    { value: "Thriller", label: "Thriller" },
   ];
   const [rating, setRating] = useState(0);
   const [selectedGenres, setSelectedGenres] = useState([]);
@@ -209,6 +211,7 @@ const AddMovie = () => {
               value={selectedGenres}
               onChange={handleGenreChange}
               isMulti
+              className="input input-bordered w-full"
               />
             </div>
             <div>

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { IoArrowBack } from "react-icons/io5";
-import { Link, useLoaderData } from "react-router-dom";
+import { data, Link, useLoaderData } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import Select from "react-select";
@@ -116,7 +116,7 @@ const UpdateMovie = () => {
               <input
                 type="text"
                 {...register("movieTitle", {
-                  required: "Movie title is required",
+                  required: "Movie title must inclued at least 2 characters",
                   minLength: 2,
                 })}
                 placeholder="Enter movie title"
