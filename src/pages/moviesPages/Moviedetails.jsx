@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import { MdOutlineAccessTime } from "react-icons/md";
-import { GiCalendarHalfYear } from "react-icons/gi";
 import { FaCalendarAlt } from "react-icons/fa";
 
 const Moviedetails = () => {
@@ -96,11 +95,11 @@ const Moviedetails = () => {
         </figure>
        <div>
        <div className="card-body space-y-4">
-          <h3 className="card-title text-2xl lg:text-4xl font-semibold">
+          <h3 className="card-title text-2xl lg:text-4xl font-bold border-l-4 border-[#FFB347] pl-2">
             {movieTitle}
           </h3>
           <div className="flex items-center">
-          <p className="text-sm text-[#FF6E6E]">{genres.join(", ")}</p>
+          <div className="text-sm flex items-center gap-1 flex-wrap"> <span className="font-semibold">Genre:</span> {genres.map(genre=><div key={genre} className="badge badge-warning badge-outline">{genre}</div>)}</div>
           <p className="text-sm flex items-center justify-center">
             <Rating
               initialValue={ratings}
@@ -109,7 +108,7 @@ const Moviedetails = () => {
               iconsCount={5}
               allowFraction
             />
-           <span className="ml-2">(Ratings)</span>
+           <span className="ml-2">({ratings})</span>
           </p>
           </div>
           <div className="border-b-2"></div>
@@ -131,7 +130,7 @@ const Moviedetails = () => {
             </button>
             <button
             onClick={()=>navigate(`/updateMovie/${_id}`)}
-              className="px-4 py-2 text-white font-semibold bg-[#121C22] rounded-lg dark:bg-green-600 "
+              className="px-4 py-2 text-white font-semibold  rounded-lg bg-green-600 "
             >
                Update Movie
             </button>

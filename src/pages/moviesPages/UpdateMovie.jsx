@@ -4,12 +4,10 @@ import { IoArrowBack } from "react-icons/io5";
 import { Link, useLoaderData } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../provider/AuthProvider";
 import Select from "react-select";
 import toast from "react-hot-toast";
 
 const UpdateMovie = () => {
-  const { setLoading } = useContext(AuthContext);
   const loadedMovie = useLoaderData();
   const genres = [
     { value: "Comedy", label: "Comedy" },
@@ -76,7 +74,6 @@ const UpdateMovie = () => {
             icon: "success",
             confirmButtonText: "Ok",
           });
-          setLoading(false);
         }
       });
   };
@@ -85,11 +82,11 @@ const UpdateMovie = () => {
     <div className="min-h-screen  flex flex-col items-center justify-center px-4 pt-12 pb-28">
       {/* Back Link */}
       <Link
-        to="/"
+        to={`/movies/${loadedMovie?._id}`}
         className="flex items-center text-[#374151] dark:text-white hover:text-[#331A15] mb-6  font-semibold"
       >
         <IoArrowBack className="mr-2" />
-        Back to Home
+        Back to Movie Details
       </Link>
 
       <div className="bg-[#F4F3F0] rounded-lg p-8 max-w-2xl w-full card bg-gradient-to-b from-blue-50 via-sky-100 to-whites shadow-lg">
@@ -98,7 +95,7 @@ const UpdateMovie = () => {
           Update Movie
         </h2>
         <p className="text-center text-gray-600 mb-8">
-          Fill in the details below to update the movie
+          Fill the details below to update the movie
         </p>
 
         {/* Form */}

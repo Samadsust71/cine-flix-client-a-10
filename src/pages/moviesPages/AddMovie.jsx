@@ -4,11 +4,10 @@ import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../provider/AuthProvider";
 import Select from "react-select";
 
 const AddMovie = () => {
-  const {setLoading} = useContext(AuthContext)
+
   const genres = [
     { value: "Comedy", label: "Comedy" },
     { value: "Drama", label: "Drama" },
@@ -58,13 +57,12 @@ const AddMovie = () => {
     };
   
     // validation part start
-    if (!/^https?:\/\/.+$/.test(poster)) {
-      toast.error("Poster must be a valid URL!");
-      return;
-    }
-
     if (movieTitle.trim().length < 2) {
       toast.error("Title must be at least 2 characters long!");
+      return;
+    }
+    if (!/^https?:\/\/.+$/.test(poster)) {
+      toast.error("Poster must be a valid URL!");
       return;
     }
 
@@ -112,7 +110,6 @@ const AddMovie = () => {
         icon: 'success',
         confirmButtonText: 'Ok'
       })
-      setLoading(false)
     }
   })
    
@@ -152,7 +149,6 @@ const AddMovie = () => {
                 name="title"
                 placeholder="Enter movie title"
                 className="input input-bordered w-full"
-                required
               />
             </div>
             <div>
@@ -164,7 +160,6 @@ const AddMovie = () => {
                 name="poster"
                 placeholder="Enter movie poster(url)"
                 className="input input-bordered w-full"
-                required
               />
             </div>
           </div>
@@ -198,7 +193,6 @@ const AddMovie = () => {
                 name="duration"
                 placeholder="Enter duration (in minutes)"
                 className="input input-bordered w-full"
-                required
               />
             </div>
           </div>
