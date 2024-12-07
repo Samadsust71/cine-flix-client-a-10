@@ -57,12 +57,13 @@ const AddMovie = () => {
     };
   
     // validation part start
-    if (movieTitle.trim().length < 2) {
-      toast.error("Title must be at least 2 characters long!");
-      return;
-    }
     if (!/^https?:\/\/.+$/.test(poster)) {
       toast.error("Poster must be a valid URL!");
+      return;
+    }
+
+    if (movieTitle.trim().length < 2) {
+      toast.error("Title must be at least 2 characters long!");
       return;
     }
 

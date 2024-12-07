@@ -33,7 +33,7 @@ const UpdateMovie = () => {
       setSelectedGenres(initialGenres);
     }
   }, [loadedMovie]);
-  const { register, handleSubmit, control, reset, setError } = useForm({
+  const { register, handleSubmit, control, reset, setError} = useForm({
     defaultValues: {
       movieTitle: loadedMovie?.movieTitle,
       poster: loadedMovie?.poster,

@@ -8,12 +8,10 @@ const AllMovie = () => {
   const loadedMovies = useLoaderData();
   const [movies , setMovies] = useState(loadedMovies)
   const [search, setSearch] = useState("")
-  const {setLoading} = useContext(AuthContext)
   useEffect(()=>{
     fetch(`https://cine-verse-server.vercel.app/movie?search=${search}`)
     .then(res=>res.json())
     .then(data=>{
-      setLoading(false)
       setMovies(data)
       
     })

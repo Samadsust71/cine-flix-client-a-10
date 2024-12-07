@@ -2,8 +2,6 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { IoArrowForward } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
-
 const MovieCard = ({ movie }) => {
   const { _id, movieTitle, poster, genres, duration, releaseYear, ratings } =
     movie || {};

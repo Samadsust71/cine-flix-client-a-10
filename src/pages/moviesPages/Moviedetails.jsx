@@ -99,7 +99,7 @@ const Moviedetails = () => {
             {movieTitle}
           </h3>
           <div className="flex items-center">
-          <div className="text-sm flex items-center gap-1 flex-wrap"> <span className="font-semibold">Genre:</span> {genres.map(genre=><div key={genre} className="badge badge-warning badge-outline">{genre}</div>)}</div>
+         <div className="text-sm flex items-center gap-1 flex-wrap"> <span className="font-semibold">Genre:</span> {genres.map(genre=><div key={genre} className="badge badge-warning badge-outline">{genre}</div>)}</div>
           <p className="text-sm flex items-center justify-center">
             <Rating
               initialValue={ratings}
@@ -130,7 +130,7 @@ const Moviedetails = () => {
             </button>
             <button
             onClick={()=>navigate(`/updateMovie/${_id}`)}
-              className="px-4 py-2 text-white font-semibold  rounded-lg bg-green-600 "
+              className="px-4 py-2 text-white font-semibold bg-[#121C22] rounded-lg dark:bg-green-600 "
             >
                Update Movie
             </button>
