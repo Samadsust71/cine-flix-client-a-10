@@ -13,6 +13,7 @@ const Login = () => {
   const { signInUser, setUser, signInWithGoogle, emailInfo , setLoading,
     loading} =
     useContext(AuthContext);
+    
 
   const handleSubmit = (e) => {
     e.preventDefault();

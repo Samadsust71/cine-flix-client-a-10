@@ -1,12 +1,15 @@
 import React from "react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="footer footer-center bg-[#050505]  p-10 text-white">
       <div className="flex flex-col justify-center items-center">
-        <h1 className="text-2xl text-[#FFB347] font-bold">CineFlix</h1>
-        <p className="">
+      <div className='px-2 py-1 bg-[#FFB347] rounded-lg'><p className="text-2xl font-bold text-white">
+            CineFlix
+          </p></div>
+        <p className="mt-2">
         Where Every Frame Tells a Story.
         </p>
       </div>

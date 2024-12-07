@@ -95,7 +95,7 @@ const Banner = () => {
                 <p>{slide.duration}</p>
               </div>
               <p className="mt-2 md:w-[60%]">{slide.subtitle}</p>
-              <button className="px-6 py-3 bg-red-600 text-white font-semibold hover:bg-transparent border border-red-600 transition-all duration-100 ease-in-out">
+              <button className="px-6 py-3 bg-red-600 text-white font-semibold hover:bg-transparent border border-red-600 transition-all duration-100 ease-in-out rounded-lg">
                 WATCH NOW
               </button>
             </div>

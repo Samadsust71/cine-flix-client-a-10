@@ -4,6 +4,9 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import { MdOutlineAccessTime } from "react-icons/md";
+import { GiCalendarHalfYear } from "react-icons/gi";
+import { FaCalendarAlt } from "react-icons/fa";
 
 const Moviedetails = () => {
   const movie = useLoaderData();
@@ -82,13 +85,13 @@ const Moviedetails = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto my-10">
-      <div className="card w-full bg-base-100 dark:bg-transparent dark:text-white shadow-lg rounded-lg">
-        <figure className="">
+    <div className="w-11/12 mx-auto my-10">
+      <div className="card w-full bg-base-100 dark:bg-transparent dark:text-white lg:flex-row lg:items-center">
+        <figure className="lg:w-1/2">
           <img
             src={poster}
             alt={movieTitle}
-            className="w-full h-[800px] object-cover"
+            className="w-full h-[400px] object-cover shadow-lg rounded-lg"
           />
         </figure>
        <div>
@@ -98,7 +101,7 @@ const Moviedetails = () => {
           </h3>
           <div className="flex items-center">
           <p className="text-sm text-[#FF6E6E]">{genres.join(", ")}</p>
-          <p className="text-sm flex items-center">
+          <p className="text-sm flex items-center justify-center">
             <Rating
               initialValue={ratings}
               readonly
@@ -106,18 +109,19 @@ const Moviedetails = () => {
               iconsCount={5}
               allowFraction
             />
-           <span>{ratings}</span>
+           <span className="ml-2">(Ratings)</span>
           </p>
           </div>
           <div className="border-b-2"></div>
           <p className="text-sm ">{summary}</p>
-          <p className="text-sm ">Duration: {duration} min</p>
-          <p className="text-sm ">Release Year: {releaseYear}</p>
+          <p className="text-sm flex items-center gap-2"><span className="text-green-500 text-xl"><MdOutlineAccessTime /></span> <span>Duration</span> <span>: {duration} min</span></p>
+          <p className="text-sm flex items-center gap-2"><span className="text-blue-500 text-xl"><FaCalendarAlt /></span> <span>Realease year</span> <span>: {releaseYear}</span></p>
+          
          
           <div className="border-b-2"></div>
 
           <div className="card-actions items-center justify-between mt-4">
-           <div className="flex items-center gap-2">
+           <div className="flex lg:items-center gap-2 flex-col lg:flex-row">
            <button
               onClick={handleAddToFavorites}
               className={`px-4 py-2 text-white font-semibold bg-[#FFB347] rounded-lg`}
@@ -125,12 +129,12 @@ const Moviedetails = () => {
             >
              + Add to Favorite
             </button>
-            <Link
-              to={`/updateMovie/${_id}`} 
-              className="px-4 py-2 text-white font-semibold bg-[#121C22] rounded-lg dark:bg-slate-900"
+            <button
+            onClick={()=>navigate(`/updateMovie/${_id}`)}
+              className="px-4 py-2 text-white font-semibold bg-[#121C22] rounded-lg dark:bg-green-600 "
             >
                Update Movie
-            </Link>
+            </button>
            </div>
             <div>
             <button

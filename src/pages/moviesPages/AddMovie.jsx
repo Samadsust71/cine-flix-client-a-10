@@ -35,6 +35,7 @@ const AddMovie = () => {
     setSelectedGenres(selectedGenre);
     
   };
+ 
   // form
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -259,9 +260,9 @@ const AddMovie = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="py-1 btn-block text-white font-semibold bg-[#121C22] rounded-lg"
+            className="py-2 btn-block text-white font-semibold bg-[#121C22] rounded-lg"
           >
-            Add Movie
+             Add Movie
           </button>
         </form>
       </div>

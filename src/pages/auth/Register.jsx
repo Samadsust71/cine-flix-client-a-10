@@ -1,13 +1,13 @@
 
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
-
+   
     const {
         createUser,
         setUser,
@@ -19,6 +19,8 @@ const Register = () => {
       const [errorMessage, setErrorMessage] = useState();
       const [showPass, setShowPass] = useState(false);
       const navigate = useNavigate();
+      const location = useLocation()
+      
     
       const handleSubmit = (e) => {
         e.preventDefault();

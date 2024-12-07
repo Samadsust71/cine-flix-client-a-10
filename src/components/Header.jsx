@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { FaBars } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo2.webp"
+import userIcon from "../assets/userIcon.jpg"
 import { AuthContext } from '../provider/AuthProvider';
 import ThemeController from './ThemeController';
 
@@ -84,9 +85,9 @@ const Header = () => {
           </div>
           <div className="flex gap-2 items-center">
             <div className="block lg:hidden"><img src={logo} alt="" className="h-10 w-10 rounded-full object-cover" /></div>
-            <div className='px-2 py-1 bg-[#FFB347] rounded-lg hidden lg:block'><Link className="text-2xl font-bold text-[#0F172A]">
+            <div className='px-2 py-1 bg-[#FFB347] rounded-lg hidden lg:block'><p className="text-2xl font-bold text-white">
             CineFlix
-          </Link></div>
+          </p></div>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -115,7 +116,7 @@ const Header = () => {
             {user ? (
               <button
                 onClick={logOutUser}
-                className="bg-[#0F172A] px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
+                className="bg-[#FFB347] px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
               >
                 Logout
               </button>
@@ -123,13 +124,13 @@ const Header = () => {
               <div className='flex items-center gap-2'>
                 <button
                 onClick={() => navigate("/login")}
-                className="bg-[#0F172A]  px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
+                className="bg-[#FFB347]  px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
               >
                 Login
               </button>
                 <button
                 onClick={() => navigate("/register")}
-                className="bg-[#0F172A]  px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
+                className="bg-[#FFB347]  px-4 py-2 rounded-lg shadow-xl text-white transition-all duration-300"
               >
                 Register
               </button>

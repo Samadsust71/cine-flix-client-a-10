@@ -6,6 +6,7 @@ import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import Select from "react-select";
+import toast from "react-hot-toast";
 
 const UpdateMovie = () => {
   const { setLoading } = useContext(AuthContext);
@@ -17,6 +18,8 @@ const UpdateMovie = () => {
     { value: "Action", label: "Action" },
     { value: "Romance", label: "Romance" },
     { value: "Sci-Fi", label: "Sci-Fi" },
+    { value: "Superhero", label: "Superhero" },
+    { value: "Thriller", label: "Thriller" },
   ];
   const [selectedGenres, setSelectedGenres] = useState([]);
   const releaseYears = Array.from(
@@ -40,7 +43,7 @@ const UpdateMovie = () => {
       releaseYear: loadedMovie?.releaseYear,
       summary: loadedMovie?.summary,
       genres: loadedMovie?.genres,
-      ratings: loadedMovie?.ratings,
+      ratings: loadedMovie?.ratings || 0,
     },
   });
 
@@ -51,6 +54,7 @@ const UpdateMovie = () => {
         type: "manual",
         message: "Please select at least one genre!",
       });
+      toast.error("Please select at least one genre!");
       return;
     }
 
@@ -78,7 +82,7 @@ const UpdateMovie = () => {
   };
 
   return (
-    <div className="min-h-screen bg-add-coffee bg-cover bg-no-repeat bg-center flex flex-col items-center justify-center px-4 pt-12 pb-28">
+    <div className="min-h-screen  flex flex-col items-center justify-center px-4 pt-12 pb-28">
       {/* Back Link */}
       <Link
         to="/"
@@ -88,7 +92,7 @@ const UpdateMovie = () => {
         Back to Home
       </Link>
 
-      <div className="bg-[#F4F3F0] rounded-lg p-8 max-w-2xl w-full card bg-gradient-to-b from-blue-50 via-sky-100 to-whites shadow-lg ">
+      <div className="bg-[#F4F3F0] rounded-lg p-8 max-w-2xl w-full card bg-gradient-to-b from-blue-50 via-sky-100 to-whites shadow-lg">
         {/* Form Header */}
         <h2 className="text-2xl font-bold text-center text-[#374151] mb-4">
           Update Movie
@@ -98,7 +102,14 @@ const UpdateMovie = () => {
         </p>
 
         {/* Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form
+          onSubmit={handleSubmit(onSubmit, (errors) => {
+            Object.values(errors).forEach((error) => {
+              toast.error(error.message || "Validation error occurred!");
+            });
+          })}
+          className="space-y-4"
+        >
           {/* Movie Title & Movie Poster */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -181,7 +192,7 @@ const UpdateMovie = () => {
                 name="genres"
                 control={control}
                 rules={{ required: "Please select at least one genre!" }}
-                render={({ field, fieldState }) => (
+                render={({ field}) => (
                   <>
                     <Select
                       {...field}
@@ -193,11 +204,7 @@ const UpdateMovie = () => {
                       }}
                       isMulti
                     />
-                    {fieldState.error && (
-                      <span className="text-red-500 text-sm">
-                        {fieldState.error.message}
-                      </span>
-                    )}
+                    
                   </>
                 )}
               />
@@ -214,8 +221,9 @@ const UpdateMovie = () => {
                   <Rating
                     size={20}
                     allowFraction
-                    initialValue={field.value}
+                    initialValue={field.value || 0}
                     onClick={field.onChange}
+                    disableFillHover
                   />
                 )}
               />
@@ -241,7 +249,7 @@ const UpdateMovie = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="py-1 btn-block text-white font-semibold bg-[#121C22] rounded-lg"
+            className="py-2 btn-block text-white font-semibold bg-[#121C22] rounded-lg"
           >
             Update Movie
           </button>
