@@ -2,8 +2,10 @@ import React from 'react'
 import Header from '../components/Header'
 import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
+import useDynamicTitle from '../dynamicTitle/useDynamicTitle'
 
 const RootLayout = () => {
+  useDynamicTitle()
   return (
     <div className='font-poppins dark:bg-[#121C22]' >
       <header>
