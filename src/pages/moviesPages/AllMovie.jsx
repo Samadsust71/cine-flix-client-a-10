@@ -11,12 +11,12 @@ const AllMovie = () => {
   useEffect(() => {
     window.scrollTo({
       top: 80,
-      behavior: 'smooth', // Adds a smooth scroll effect
+      behavior: 'smooth', 
     });
   }, [])
  
   useEffect(()=>{
-    fetch(`https://cine-verse-server.vercel.app/movie?search=${search}`)
+    fetch(`https://cine-verse-server.vercel.app/movies?search=${search}`)
     .then(res=>res.json())
     .then(data=>{
       setMovies(data)
