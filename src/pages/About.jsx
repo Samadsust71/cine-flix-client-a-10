@@ -38,9 +38,9 @@ const About = () => {
       </section>
 
       <section className="text-center">
-        <h2 className="text-2xl font-bold mb-4">Join the CineVerse Family</h2>
+        <h2 className="text-2xl font-bold mb-4">Join the CineFlix Family</h2>
         <p className="text-base leading-relaxed">
-          CineFlix is more than a website; it’s a community for people who love cinema. We invite you to dive into the CineVerse experience, explore new films, and create your personal movie universe.
+          CineFlix is more than a website; it’s a community for people who love cinema. We invite you to dive into the CineFlix experience, explore new films, and create your personal movie universe.
         </p>
         <p className="text-base mt-4">
           Together, let’s celebrate the art of storytelling—one movie at a time.
