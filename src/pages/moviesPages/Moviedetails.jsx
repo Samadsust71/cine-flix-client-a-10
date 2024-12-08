@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
@@ -8,6 +8,13 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
 
 const Moviedetails = () => {
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 80,
+      behavior: 'smooth', // Adds a smooth scroll effect
+    });
+  }, [])
   const movie = useLoaderData();
   const navigate = useNavigate();
   const { user, setLoading } = useContext(AuthContext);

@@ -1,5 +1,5 @@
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -7,6 +7,12 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const Register = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 80,
+      behavior: 'smooth', // Adds a smooth scroll effect
+    });
+  }, [])
    
     const {
         createUser,

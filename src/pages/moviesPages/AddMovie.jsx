@@ -1,4 +1,4 @@
-import React, {  useContext, useState } from "react";
+import React, {  useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -8,6 +8,12 @@ import Select from "react-select";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const AddMovie = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 80,
+      behavior: 'smooth', // Adds a smooth scroll effect
+    });
+  }, [])
 
   const genres = [
     { value: "Comedy", label: "Comedy" },

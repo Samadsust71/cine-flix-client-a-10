@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Banner from '../components/Banner'
 import { Link, useLoaderData } from 'react-router-dom'
 import MovieCard from '../components/moviesComponents/MovieCard'
@@ -6,6 +6,12 @@ import ReasonsToJoin from '../components/ReasonsToJoin'
 import FAQSection from '../components/FAQSection'
 
 const HomePage = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Adds a smooth scroll effect
+    });
+  }, [])
   const loadedMovies = useLoaderData()
   return (
     <div>

@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Adds a smooth scroll effect
+    });
+  }, [])
   return (
     <div className="bg-gray-900 text-white py-10 px-6 md:px-16">
       <h1 className="text-4xl font-bold mb-6 text-center">About CineFlix</h1>

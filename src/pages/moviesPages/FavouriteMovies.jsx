@@ -13,7 +13,12 @@ const FavouriteMovies = () => {
         setFavMovies(data)
     })
  },[])
-
+ useEffect(() => {
+  window.scrollTo({
+    top: 80,
+    behavior: 'smooth', // Adds a smooth scroll effect
+  });
+}, [])
   return (
     <div className='w-11/12 mx-auto my-10 space-y-10'>
       <h2 className="text-3xl font-semibold text-center dark:text-white">Favourite Movies</h2>

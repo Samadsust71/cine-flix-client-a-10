@@ -8,6 +8,12 @@ import Select from "react-select";
 import toast from "react-hot-toast";
 
 const UpdateMovie = () => {
+  useEffect(() => {
+    window.scrollTo({
+      top: 80,
+      behavior: 'smooth', // Adds a smooth scroll effect
+    });
+  }, [])
   const loadedMovie = useLoaderData();
   const genres = [
     { value: "Comedy", label: "Comedy" },

@@ -8,7 +8,12 @@ const AllMovie = () => {
   const loadedMovies = useLoaderData();
   const [movies , setMovies] = useState(loadedMovies)
   const [search, setSearch] = useState("")
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 80,
+      behavior: 'smooth', // Adds a smooth scroll effect
+    });
+  }, [])
  
   useEffect(()=>{
     fetch(`https://cine-verse-server.vercel.app/movie?search=${search}`)
