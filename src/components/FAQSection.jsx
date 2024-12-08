@@ -18,7 +18,7 @@ const FAQSection = () => {
         {faqs.map((faq, index) => (
           <details
             key={index}
-            className="bg-base-100 dark:bg-[#20161F] dark:text-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+            className="bg-base-100 dark:bg-[#1B262C] dark:text-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
           >
             <summary className="font-semibold cursor-pointer flex justify-between items-center">
               {faq.question}

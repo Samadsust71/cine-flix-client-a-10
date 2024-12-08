@@ -1,13 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import MovieCard from "../../components/moviesComponents/MovieCard";
 import { FaSearch } from "react-icons/fa";
-import { AuthContext } from "../../provider/AuthProvider";
+
 
 const AllMovie = () => {
   const loadedMovies = useLoaderData();
   const [movies , setMovies] = useState(loadedMovies)
   const [search, setSearch] = useState("")
+
+ 
   useEffect(()=>{
     fetch(`https://cine-verse-server.vercel.app/movie?search=${search}`)
     .then(res=>res.json())

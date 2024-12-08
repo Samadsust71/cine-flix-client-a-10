@@ -39,11 +39,11 @@ const Register = () => {
         }
     
         if (!hasUpperCase) {
-          setErrorMessage("Password must contain an uppercase letter");
+          setErrorMessage("Password must contain an uppercase and a lowercase letter");
           return;
         }
         if (!hasLowerCase) {
-          setErrorMessage("Password must contain a lowercase letter");
+          setErrorMessage("Password must contain an uppercase and a lowercase letter");
           return;
         }
          

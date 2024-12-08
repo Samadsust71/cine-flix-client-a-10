@@ -10,7 +10,7 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { signInUser, setUser, signInWithGoogle, emailInfo , setLoading,
+  const { signInUser, setUser, signInWithGoogle, setLoading,
     loading} =
     useContext(AuthContext);
     
@@ -61,7 +61,6 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                ref={emailInfo}
                 placeholder="Enter your email"
                 className="input input-bordered bg-white"
                 required

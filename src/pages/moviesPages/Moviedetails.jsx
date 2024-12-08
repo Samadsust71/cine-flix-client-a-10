@@ -90,11 +90,11 @@ const Moviedetails = () => {
           <img
             src={poster}
             alt={movieTitle}
-            className="w-full h-[400px] object-cover shadow-lg rounded-lg"
+            className="w-full h-[600px] object-cover shadow-lg rounded-lg"
           />
         </figure>
-       <div>
-       <div className="card-body space-y-4">
+       <div className="lg:w-1/2">
+       <div className="card-body px-0 lg:px-8 space-y-4">
           <h3 className="card-title text-2xl lg:text-4xl font-bold border-l-4 border-[#FFB347] pl-2">
             {movieTitle}
           </h3>
@@ -112,7 +112,7 @@ const Moviedetails = () => {
           </p>
           </div>
           <div className="border-b-2"></div>
-          <p className="text-sm ">{summary}</p>
+          <p className="text-sm text-wrap break-words">{summary}</p>
           <p className="text-sm flex items-center gap-2"><span className="text-green-500 text-xl"><MdOutlineAccessTime /></span> <span>Duration</span> <span>: {duration} min</span></p>
           <p className="text-sm flex items-center gap-2"><span className="text-blue-500 text-xl"><FaCalendarAlt /></span> <span>Realease year</span> <span>: {releaseYear}</span></p>
           

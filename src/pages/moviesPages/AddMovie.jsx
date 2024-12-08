@@ -1,10 +1,11 @@
-import React, {  useState } from "react";
+import React, {  useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import Select from "react-select";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddMovie = () => {
 
@@ -20,6 +21,7 @@ const AddMovie = () => {
   ];
   const [rating, setRating] = useState(0);
   const [selectedGenres, setSelectedGenres] = useState([]);
+  const {user} = useContext(AuthContext)
 
   const releaseYears = Array.from(
     { length: new Date().getFullYear() - 2000 + 1 },
@@ -40,6 +42,7 @@ const AddMovie = () => {
   // form
   const handleSubmit = (e) => {
     e.preventDefault();
+    const email = user?.email;
     const form = e.target;
     const movieTitle = form.title.value;
     const poster = form.poster.value;
@@ -55,7 +58,8 @@ const AddMovie = () => {
       duration,
       releaseYear,
       summary,
-      ratings
+      ratings,
+      email
     };
   
     // validation part start
@@ -113,6 +117,9 @@ const AddMovie = () => {
         icon: 'success',
         confirmButtonText: 'Ok'
       })
+      form.reset()
+      setSelectedGenres([]); 
+      setRating(0); 
     }
   })
    
@@ -167,7 +174,7 @@ const AddMovie = () => {
             </div>
           </div>
 
-          {/* Genre & Duration  */}
+          {/* Realease year & Duration  */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
 
@@ -200,7 +207,7 @@ const AddMovie = () => {
             </div>
           </div>
 
-          {/* Release Year & Rating */}
+          {/* Genres & Rating */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
               <label className="block text-sm font-medium">
@@ -211,7 +218,6 @@ const AddMovie = () => {
               value={selectedGenres}
               onChange={handleGenreChange}
               isMulti
-              className="input input-bordered w-full"
               />
             </div>
             <div>
@@ -227,11 +233,10 @@ const AddMovie = () => {
               >
                 <Rating
                   size={20}
-                  initialValue={0}
+                  initialValue={rating}
                   allowFraction
                   onClick={handleRating}
                   showTooltip
-                  disableFillHover
                   tooltipStyle={{
                     background: "none",
                     color: "black",
@@ -242,7 +247,7 @@ const AddMovie = () => {
             </div>
           </div>
 
-          {/* Photo */}
+          {/* Summary */}
           <div>
             <label className="block text-sm font-medium">
               Summary *

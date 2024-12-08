@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 const Footer = () => {
   return (
-    <div className=" bg-[#050505]   text-white">
+    <div className=" bg-[#10172A]   text-white">
       <section className="py-16">
         <div className="w-11/12 mx-auto grid lg:grid-cols-2 gap-8">
           {/* Left Section */}

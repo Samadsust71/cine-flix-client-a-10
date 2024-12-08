@@ -8,7 +8,6 @@ export const googleProvider = new GoogleAuthProvider()
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const emailInfo = useRef()
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") || "light"
   );
@@ -69,7 +68,6 @@ const AuthProvider = ({ children }) => {
     signInUser,
     passwordReset,
     signInWithGoogle,
-    emailInfo,
     toggleTheme,
     theme
     

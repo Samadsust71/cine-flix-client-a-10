@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { IoArrowBack } from "react-icons/io5";
 import { data, Link, useLoaderData } from "react-router-dom";
@@ -75,7 +75,15 @@ const UpdateMovie = () => {
             confirmButtonText: "Ok",
           });
         }
-      });
+      })
+      .catch(error=>{
+        Swal.fire({
+          title: "Error!",
+          text: `${error?.message || "Movie updation failed"}`,
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      })
   };
 
   return (
@@ -102,7 +110,7 @@ const UpdateMovie = () => {
         <form
           onSubmit={handleSubmit(onSubmit, (errors) => {
             Object.values(errors).forEach((error) => {
-              toast.error(error.message || "Validation error occurred!");
+              toast.error(error.message || "Validation error occurred! Please use proper value!");
             });
           })}
           className="space-y-4"
@@ -116,8 +124,13 @@ const UpdateMovie = () => {
               <input
                 type="text"
                 {...register("movieTitle", {
-                  required: "Movie title must inclued at least 2 characters",
-                  minLength: 2,
+                  required: "Movie title is required",
+                  validate: (value) => {
+                    if (value.trim().length < 2) {
+                      return "Movie title must include at least 2 non-whitespace characters";
+                    }
+                    return true;
+                  },
                 })}
                 placeholder="Enter movie title"
                 className="input input-bordered w-full"
@@ -133,7 +146,7 @@ const UpdateMovie = () => {
                   required: "Poster URL is required",
                   pattern: {
                     value: /^https?:\/\/.+$/,
-                    message: "Poster must be a valid URL",
+                    message: "Invalid URL! Poster must be a valid URL",
                   },
                 })}
                 placeholder="Enter movie poster(url)"
@@ -220,7 +233,12 @@ const UpdateMovie = () => {
                     allowFraction
                     initialValue={field.value || 0}
                     onClick={field.onChange}
-                    disableFillHover
+                    showTooltip
+                  tooltipStyle={{
+                    background: "none",
+                    color: "black",
+                    marginLeft: "0px",
+                  }}
                   />
                 )}
               />
@@ -235,7 +253,12 @@ const UpdateMovie = () => {
             <textarea
               {...register("summary", {
                 required: "Summary is required",
-                minLength: 10,
+                validate: (value) => {
+                  if (value.trim().length < 10) {
+                    return "Summary must include at least 10 non-whitespace characters";
+                  }
+                  return true; 
+                },
               })}
               className="w-full p-2 border rounded"
               rows="4"
