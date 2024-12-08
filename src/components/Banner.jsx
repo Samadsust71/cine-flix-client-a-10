@@ -8,13 +8,13 @@ import { SiImdb } from "react-icons/si";
 const Banner = () => {
   const slides = [
     {
-      title: "Fallout",
+      title: "Annihilation",
       subtitle:
-        "In a future, post-apocalyptic Los Angeles brought about by nuclear decimation, citizens must live in underground bunkers to protect themselves from radiation, mutants and bandits.",
+        "A biologist's husband disappears. She puts her name forward for an expedition into an environmental disaster zone, but does not find what she's expecting. The expedition team is made up of the biologist, an anthropologist, a psychologist, a surveyor, and a linguist",
       rating: 3.8,
-      year: "2024",
+      year: "2018",
       quality: "4K",
-      duration: "1 hr 30 min",
+      duration: "1 hr 55 min",
       image: "https://i.ibb.co/LY1RZX7/slide1.jpg",
     },
     {
