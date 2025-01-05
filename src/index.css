@@ -8,7 +8,7 @@
 
 
 body{
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 svg.star-svg {
     display: inline;   

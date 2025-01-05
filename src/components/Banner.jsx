@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { SiImdb } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const slides = [
@@ -40,10 +41,10 @@ const Banner = () => {
   ];
 
   return (
-    <div className="relative mb-10 w-11/12 mx-auto">
+    <div className="relative mb-10">
       <Swiper
         style={{
-          "--swiper-pagination-color": "#ff0829",
+          "--swiper-pagination-color": "#FFB347",
           "--swiper-pagination-bullet-inactive-color": "#999999",
           "--swiper-pagination-bullet-inactive-opacity": "1",
           "--swiper-pagination-bullet-size": "16px",
@@ -53,17 +54,18 @@ const Banner = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         loop={true}
-        className="rounded-lg"
+        className=""
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={index} className="relative ">
+          <SwiperSlide key={index} className="relative">
             <img
               src={slide.image}
               alt={slide.title}
-              className="w-full h-[800px] object-cover"
+              className="w-full h-[500px] object-cover"
             />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-start  text-white pl-6 space-y-8">
-              <p className="text-gray-300 font-semibold border-l-4 border-red-600 pl-2">
+            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div className="absolute inset-0 flex flex-col justify-center items-start  text-white w-11/12 mx-auto space-y-8">
+              <p className="text-gray-300 font-semibold border-l-4 border-[#FFB347] pl-2">
                 NEW REALEASES
               </p>
               <h2 className="text-2xl md:text-4xl font-bold">{slide.title}</h2>
@@ -81,7 +83,7 @@ const Banner = () => {
                     <span className="text-xs text-white">{slide.rating}</span>
                   </div>
                   <div className="flex text-white">
-                    <SiImdb className="h-6 w-10 text-[#F6C700]" />
+                    <SiImdb className="h-6 w-10 text-[#FFB347]" />
                     <span>Score</span>
                   </div>
                 </div>
@@ -95,9 +97,9 @@ const Banner = () => {
                 <p>{slide.duration}</p>
               </div>
               <p className="mt-2 md:w-[60%]">{slide.subtitle}</p>
-              <button className="px-6 py-3 bg-red-600 text-white font-semibold hover:bg-transparent border border-red-600 transition-all duration-100 ease-in-out rounded-lg">
-                WATCH NOW
-              </button>
+              <Link to={'/allMovies'} className="px-6 py-3 bg-[#FFB347] text-white font-semibold hover:bg-transparent border border-[#FFB347] transition-all duration-100 ease-in-out rounded-lg">
+                SEE MORE
+              </Link>
             </div>
           </SwiperSlide>
         ))}

@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         {
             path:"/",
             element:<HomePage/>,
-            loader: ()=>fetch("https://cine-verse-server.vercel.app/movies-sorted")
+            
         },
         {
             path:"/addMovie",
@@ -34,12 +34,11 @@ const router = createBrowserRouter([
         },
         {
             path:"/allMovies",
-            element:<AllMovie/>,
-            loader:()=>fetch("https://cine-verse-server.vercel.app/movies")
+            element:<AllMovie/>
         },
         {
             path:"/movies/:id",
-            element:<PrivateRoute><Moviedetails/></PrivateRoute>,
+            element:<Moviedetails/>,
             loader:({params})=>fetch(`https://cine-verse-server.vercel.app/movies/${params.id}`)
         },
         {

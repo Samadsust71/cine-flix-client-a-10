@@ -1,4 +1,6 @@
+import Lottie from "lottie-react";
 import React from "react";
+import faqAnimationData from "../assets/faqLottieData.json"
 
 const FAQSection = () => {
   const faqs = [
@@ -10,15 +12,19 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="my-12 max-w-4xl mx-auto px-4">
+    <section className="my-10">
       <h2 className="text-2xl lg:text-4xl font-bold dark:text-white mb-6 text-center">
         Frequently Asked Questions
       </h2>
-      <div className="space-y-4">
+      <div className="flex items-center flex-col lg:flex-row">
+      <div className="lg:w-1/2">
+        <Lottie animationData={faqAnimationData} className="h-[400px]" ></Lottie>
+      </div>
+      <div className="space-y-4 lg:w-1/2">
         {faqs.map((faq, index) => (
           <details
             key={index}
-            className="bg-base-100 dark:bg-[#1B262C] dark:text-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+            className="bg-base-200 dark:bg-[#1B262C] dark:text-white p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
           >
             <summary className="font-semibold cursor-pointer flex justify-between items-center">
               {faq.question}
@@ -27,6 +33,7 @@ const FAQSection = () => {
             <p className="mt-2">{faq.answer}</p>
           </details>
         ))}
+      </div>
       </div>
     </section>
   );
