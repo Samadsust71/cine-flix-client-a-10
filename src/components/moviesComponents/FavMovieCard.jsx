@@ -4,9 +4,8 @@ import { IoTrashBin } from "react-icons/io5";
 import Swal from "sweetalert2";
 
 const FavMovieCard = ({ movie, setFavMovies, favMovies }) => {
-  const { _id, movieTitle, poster, genres, duration, releaseYear, ratings } =
+  const { _id, movieTitle, poster, genres, duration, releaseYear, ratings,summary } =
     movie || {};
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -38,7 +37,7 @@ const FavMovieCard = ({ movie, setFavMovies, favMovies }) => {
   };
 
   return (
-    <div className="w-full bg-base-100 dark:bg-[#1B262C] shadow-xl dark:text-white p-6 rounded-lg flex flex-col space-y-6">
+    <div className="w-full bg-base-200 dark:bg-[#1B262C] shadow-xl dark:text-white p-6 rounded-lg flex flex-col space-y-6">
     <div>
       <img
         src={poster}
@@ -57,14 +56,15 @@ const FavMovieCard = ({ movie, setFavMovies, favMovies }) => {
       <div className="text-sm flex items-center gap-1 flex-wrap"> <span className="font-semibold">Genre:</span> {genres.map(genre=><div key={genre} className="badge badge-warning badge-outline">{genre}</div>)}</div>
 
       <div className=" font-bold flex-grow"><h3 className="border-l-4 border-[#FFB347] pl-2">{movieTitle}</h3></div>
+      <p>{summary}</p>
       <p className="text-sm">Duration: {duration} min</p>
     </div>
     <div className="mt-4">
     <button
           onClick={() => handleDelete(_id)}
-          className="flex items-center text-sm text-white px-3 py-2 bg-red-500 rounded-lg"
+          className="flex items-center text-sm text-red-500 px-3 py-2 bg-red-100 rounded-full"
         >
-          <span>Delete Favorite</span>
+          <span>Delete </span>
           <IoTrashBin />
         </button>
     </div>

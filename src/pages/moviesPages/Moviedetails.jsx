@@ -1,11 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { FaCalendarAlt } from "react-icons/fa";
+import useAxios from "../../hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
+import Loading from "../../components/Loading";
 
 const Moviedetails = () => {
 
@@ -15,10 +18,23 @@ const Moviedetails = () => {
       behavior: 'smooth', // Adds a smooth scroll effect
     });
   }, [])
-  const movie = useLoaderData();
-  const navigate = useNavigate();
-  const { user, setLoading } = useContext(AuthContext);
+  const { user, setLoading,loading } = useContext(AuthContext);
   
+  const {id}= useParams()
+  const navigate = useNavigate();
+  const axiosInstance = useAxios()
+  const {
+      data: movie,
+      isLoading,
+      
+    } = useQuery({
+      queryKey: ["movie-details",id],
+      queryFn: async () => {
+        const { data } = await axiosInstance.get(`movies/${id}`);
+        return data;
+      },
+    });
+  if(isLoading) return <Loading/>
   const {
     _id,
     movieTitle,
@@ -39,6 +55,7 @@ const Moviedetails = () => {
       genres,
       duration,
       releaseYear,
+      summary,
       ratings,
       email,
     };
@@ -129,11 +146,13 @@ const Moviedetails = () => {
           <div className="card-actions items-center justify-between mt-4">
            <div className="flex lg:items-center gap-2 flex-col lg:flex-row">
            <button
-              onClick={handleAddToFavorites}
+              onClick={()=>{
+                user?.email? handleAddToFavorites() :navigate('/login')
+              }}
               className={`px-4 py-2 text-white font-semibold bg-[#FFB347] rounded-lg`}
-             
+              disabled={loading}
             >
-             + Add to Favorite
+             {loading?"Adding":"+ Add to Favorite"}
             </button>
             <button
             onClick={()=>navigate(`/updateMovie/${_id}`)}

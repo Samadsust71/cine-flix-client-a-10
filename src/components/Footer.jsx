@@ -70,21 +70,22 @@ const Footer = () => {
           {/* Right Section */}
           <div className="rounded-lg lg:p-6">
             <h3 className="text-xl font-bold">
-              Connect with Us
+              Subscribe for Newsletter
             </h3>
             <form className="mt-4 space-y-4">
               <div>
-                <textarea
-                  placeholder="Message"
-                  className="textarea  w-full text-black focus:border-[#1B1A1A] focus:ring-[#1B1A1A]"
+                <input
+                  placeholder="Enter Your Email"
+                  type="email"
+                  className="input input-bordered w-full text-black focus:border-[#1B1A1A] focus:ring-[#1B1A1A]"
                   rows="4"
-                ></textarea>
+                ></input>
               </div>
               <button
                 type="button"
                 className="btn rounded-full border-2 bg-white"
               >
-                Send Message
+                Subscribe
               </button>
             </form>
           </div>

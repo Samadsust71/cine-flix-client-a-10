@@ -8,7 +8,7 @@ const About = () => {
     });
   }, [])
   return (
-    <div className="bg-gray-900 text-white py-10 px-6 md:px-16">
+    <div className="dark:bg-gray-900 bg-base-300 dark:text-white py-10 px-6 md:px-16">
       <h1 className="text-4xl font-bold mb-6 text-center">About CineFlix</h1>
       <p className="text-lg leading-relaxed mb-6 text-center">
         Welcome to <span className="text-[#FFB347] font-semibold">CineFlix</span>, where every frame tells a story!  

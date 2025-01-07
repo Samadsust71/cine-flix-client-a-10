@@ -7,6 +7,7 @@ import FAQSection from '../components/FAQSection'
 import useAxios from '../hooks/useAxios'
 import { useQuery } from '@tanstack/react-query'
 import Loading from '../components/Loading'
+import ContactSection from '../components/ContactSection'
 
 const HomePage = () => {
   useEffect(() => {
@@ -43,7 +44,7 @@ const HomePage = () => {
         <Banner/>
       </section>
       <div className='loaded-movies w-11/12 mx-auto space-y-8 my-10'>
-      <h1 className='font-bold lg:text-4xl text-2xl text-[#0F172A] dark:text-white text-center'>Featured Movies</h1>
+      <h1 className='font-bold lg:text-4xl text-2xl text-[#0F172A] dark:text-white text-start border-l-4 border-[#FFB347] pl-2'>Featured Movies</h1>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
         {
           loadedMovies.map(movie=><MovieCard key={movie._id} movie={movie}/>)
@@ -60,6 +61,9 @@ const HomePage = () => {
         </div>
         <div>
           <FAQSection/>
+        </div>
+        <div>
+          <ContactSection/>
         </div>
       </div>
     </div>

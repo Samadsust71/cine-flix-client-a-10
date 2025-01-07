@@ -32,7 +32,7 @@ const MovieCard = ({ movie }) => {
       <div className="mt-4">
         <Link
           to={`/movies/${_id}`}
-          className="flex items-center text-[#FFB347] font-semibold w-fit"
+          className="flex items-center px-4 py-2 text-white bg-[#121C22] rounded-lg dark:bg-green-600 font-semibold w-fit"
         >
           <span>See Details</span> <IoArrowForward className="ml-2" />
         </Link>
