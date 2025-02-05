@@ -1,6 +1,8 @@
 # CineFlix: Where Every Frame Tells a Story 🎥
 
-**Live Site URL:** [CineFlix Live](https://cine-verse-b249e.web.app/)
+![CineFlix Preview](https://i.ibb.co.com/rRhWkKfP/Screenshot-63.png)
+
+## 🔗 **Live Demo:** [Visit CineFlix](https://cine-verse-b249e.web.app)
 
 ---
 
